@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Messages</title>
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+<link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+.container{
+margin-bottom: 50%;
+margin-left: 15px;
+margin-right: 8px;
+}
+div.hm {
+	margin:auto;
+     text-align: center;
+}
+</style>
+<body>
+<div class="hm">
+<div class="container">
+<h4>You can send me messages here.<br/>
+These messages are completely public and can be read by anyone.<br/>
+You can send the message anonymously if you want to.</h4>
+<p style="color:Blue;"><a href="https://borahabhigyan.github.io/">Homepage</a></p>
+<div id="comment-section"></div>
+</div>
+</div>
+</body>
+<script>
+initComments({
+  node: document.getElementById("comment-section"),
+  defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+  serverName: "cactus.chat",
+  siteName: "bga",
+  commentSectionId: "section1"
+})
+</script>
+</html>
