@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weeks Spent Living</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  background-color: #ccc;
+}
+
+#header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#chart-container {
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+<body>
+<div id="header"></div><div id="chart-container">
+  <canvas id="chart"></canvas>
+</div><
+<div id="container"></div>
+</body>
+<script>
+const container = document.getElementById("container");
+const startDate = new Date("2001-11-13");
+const currentDate = new Date();
+const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+const weeksPassed = Math.floor((currentDate - startDate) / millisecondsPerWeek);
+const totalWeeks = 3652;
+const currentWeek = weeksPassed + 1;
+const percentagePassed = ((weeksPassed / totalWeeks) * 100).toFixed(2);
+
+const header = document.getElementById("header");
+const weekText = document.createElement("p");
+weekText.innerText = `Week ${currentWeek} of ${totalWeeks} (~70 Years)`;
+const percentageText = document.createElement("p");
+percentageText.innerText = `(${percentagePassed}% of weeks passed)`;
+header.appendChild(weekText);
+header.appendChild(percentageText);
+
+// Create the data for the pie chart
+const data = {
+  labels: ['Passed', 'Remaining'],
+  datasets: [{
+    data: [percentagePassed, 100 - percentagePassed],
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(54, 162, 235, 0.5)',
+    ],
+    borderColor: [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+    ],
+    borderWidth: 1
+  }]
+};
+
+// Create the pie chart
+const chartEl = document.getElementById('chart');
+const chart = new Chart(chartEl, {
+  type: 'pie',
+  data: data
+});
+
+for (let i = weeksPassed; i > 0; i--) {
+  const square = document.createElement("div");
+  square.classList.add("square");
+  square.innerText = i;
+  container.appendChild(square);
+}
+</script>
+</html>
