@@ -116,26 +116,35 @@
         }, 10);
       }
 
-      AFRAME.registerComponent('mytarget', {
-        init: function () {
-          this.el.addEventListener('targetFound', event => {
-            console.log("target found");
-            showAvatar(() => {
+       AFRAME.registerComponent('mytarget', {
+    init: function () {
+      const videoMp4 = document.querySelector("#paintandquest-video-mp4");
+      const videoWebm = document.querySelector("#paintandquest-video-webm");
+
+      this.el.addEventListener('targetFound', () => {
+        console.log("Target found");
+        showAvatar(() => {
+          setTimeout(() => {
+            showPortfolio(() => {
               setTimeout(() => {
-                showPortfolio(() => {
-                  setTimeout(() => {
-                    showInfo();
-                  }, 300);
-                });
+                showInfo();
               }, 300);
             });
-          });
-          this.el.addEventListener('targetLost', event => {
-            console.log("target found");
-          });
-          //this.el.emit('targetFound');
-        }
+          }, 300);
+          // Start playing the video
+          videoMp4.play();
+          videoWebm.play();
+        });
       });
+
+      this.el.addEventListener('targetLost', () => {
+        console.log("Target lost");
+        // Stop the video when the marker is lost
+        videoMp4.pause();
+        videoWebm.pause();
+      });
+    }
+  });
     </script>
 
     <style>
