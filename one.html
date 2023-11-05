@@ -8,7 +8,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 90vh;
+            height: 95vh;
             margin: 0;
         }
         #message {
@@ -30,16 +30,16 @@
             var currentMinutes = currentDate.getUTCMinutes() + 30; // Add 30 minutes for IST offset
 
             // Check if the current date and time match the target datetime (November 5, 2023, 13:32 IST)
-            if (currentMonth === 11 && currentDay === 5 && currentHours === 14 && currentMinutes === 18) {
-                document.getElementById("message").innerHTML = '<b>Happy birthday, Baa!</b><br><a href="https://borahabhigyan.github.io/onewish.html">Please Click Here!</a>';
+            if (currentMonth === 11 && currentDay === 5 && currentHours === 14 && currentMinutes === 25) {
+                document.getElementById("message").innerHTML = '<b>Happy birthday, Baa!🎂🎊</b><br><a href="https://borahabhigyan.github.io/onewish.html">Please Click Here!</a>';
             } else {
-                var targetTime = new Date("2023-11-05T14:18:00+05:30"); // Set the target time
+                var targetTime = new Date("2023-11-05T14:25:00+05:30"); // Set the target time
                 var currentTime = new Date(); // Get the current time
                 var timeDifference = targetTime - currentTime;
                 if (timeDifference > 0) {
-                    document.getElementById("message").innerHTML = "<b>Please wait for November 6, 2023.</b><br>Kiba Permission lagile allow koribi.<br>Camera Permission khujileu Allow koribi.<br>PAN Card tu logot rakhibi, backside tu scan koribo lagibo (eku personal data nathake backside t).<br>Firefox t bhalkoi kaam kore.<br>Aru prothombar khelimeli kore ketiyaba, refresh korilehe thik hoi. (-_-)";
+                    document.getElementById("message").innerHTML = "<b>Please wait for November 6, 2023.</b><br>Kiba Permission lagile allow koribi.<br>Camera Permission khujileu Allow koribi.<br>PAN Card tu logot rakhibi, backside tu scan koribo lagibo (eku personal data nathake backside t).<br>Firefox t bhalkoi kaam kore.<br>Aru prothombar khelimeli kore ketiyaba, refresh korilehe thik hoi.";
                 } else {
-                    document.getElementById("message").innerHTML = 'Happy birthday, Baa!<br><a href="https://borahabhigyan.github.io/onewish.html">Please Click Here!</a>';
+                    document.getElementById("message").innerHTML = '<b>Happy birthday, Baa!🎂🎊</b><br><a href="https://borahabhigyan.github.io/onewish.html">Please Click Here!</a>';
                 }
             }
         }
