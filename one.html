@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>6/11</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #message {
+            text-align: center;
+			font-style: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="message"></div>
+
+    <script>
+         function updateMessage() {
+            // Get the current date and time in IST (Indian Standard Time)
+            var currentDate = new Date();
+            var currentMonth = currentDate.getUTCMonth() + 1; // Month is 0-indexed, so add 1
+            var currentDay = currentDate.getUTCDate();
+            var currentHours = currentDate.getUTCHours() + 5; // Add 5 hours for IST offset
+            var currentMinutes = currentDate.getUTCMinutes() + 30; // Add 30 minutes for IST offset
+
+            // Check if the current date and time match the target datetime (November 5, 2023, 13:32 IST)
+            if (currentMonth === 11 && currentDay === 5 && currentHours === 14 && currentMinutes === 10) {
+                document.getElementById("message").innerHTML = 'Happy birthday, Baa!<br><a href="https://borahabhigyan.github.io/onewish.html">Please Click Here!</a>';
+            } else {
+                var targetTime = new Date("2023-11-05T14:10:00+05:30"); // Set the target time
+                var currentTime = new Date(); // Get the current time
+                var timeDifference = targetTime - currentTime;
+                if (timeDifference > 0) {
+                    document.getElementById("message").innerHTML = "Please wait for November 6, 2023.<br>Camera Permission khujile Allow koribi.<br>PAN Card tu logot rakhibi, backside tu scan koribo lagibo (eku personal data nathake backside.<br>Firefox t bhalkoi kaam kore.<br>Aru prothombar khelimeli kore ketiyaba, refresh korile thik hoi jai.";
+                } else {
+                    document.getElementById("message").innerHTML = 'Happy birthday, Baa!<br><a href="https://borahabhigyan.github.io/onewish.html">Please Click Here!</a>';
+                }
+            }
+        }
+
+        // Check and update the message every minute (you can adjust the interval as needed)
+        setInterval(updateMessage, 500);
+
+        // Call the function immediately on page load
+        updateMessage();
+    </script>
+</body>
+</html>
