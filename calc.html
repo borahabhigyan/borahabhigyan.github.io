@@ -40,8 +40,7 @@
     <button onclick="calculateTotal()">Calculate Total</button>
 
     <!-- Display total -->
-    <h2>Total:</h2>
-    <p id="total"></p>
+    <h2 id="total">Total:</h2>
 
     <script>
         function calculateTotal() {
@@ -70,7 +69,7 @@
             const total = (0.05 * hsMarks) + (0.05 * bedMarks) + (0.05 * graduationMarks) + (0.80 * ctetMarks) +
                           nccC + nccB + sports + cultural + none;
 
-            document.getElementById("total").textContent = `Total: ${total.toFixed(2)}`;
+            document.getElementById("total").textContent = `${total.toFixed(2)}`;
         }
 
         // Event listener for the CTET option dropdown
