@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Messages</title>
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v2/dist/waline.css"
+  />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+.container{
+margin-bottom: 50%;
+margin-left: 15px;
+margin-right: 8px;
+}
+div.hm {
+	margin:auto;
+     text-align: center;
+}
+</style>
+<body>
+<div class="hm">
+<div class="container">
+<p style="color:Blue;"><a href="https://borahabhigyan.github.io/">🏠 Homepage</a></p>
+<h4>my message board!</br>leave a comment:</h4>
+<div id="waline"></div>
+  <script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'https://test-comment-eight.vercel.app/',
+      lang: 'en',
+    });
+  </script>
+
+</div>
+</div>
+</body>VV
+
+</html>
