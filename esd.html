@@ -100,12 +100,12 @@ function updateFirstThursdays() {
     const firstYear = thursday.first.getFullYear();
     const firstDay = thursday.first.getDate();
 
-    let firstText = `${firstDay} ${firstMonth} ${firstYear}`;
+    let firstText = `${firstMonth} ${firstDay}, ${firstYear}`;
 
     if (thursday.second) {
       const secondMonth = thursday.second.toLocaleString('default', { month: 'long' });
       const secondDay = thursday.second.getDate();
-      firstText += ` / ${secondDay} ${secondMonth} ${firstYear}`;
+      firstText += ` / ${secondMonth} ${secondDay}, ${firstYear}`;
     }
 
     const listItem = document.createElement("p");
