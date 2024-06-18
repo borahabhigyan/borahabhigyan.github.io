@@ -1,66 +1,126 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Welcome</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e5ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-<body spellcheck="false" contenteditable="true">
-<div id="styleMe">  
-<p>Hi.<br/>
-			I'm Abhigyan.</br></br>
+.container {
+ 
+  height: 100dvh;
+    width: 100dvw;
+    max-width: 600px;
+    background: #e0e5ec;
+    border-radius: 20px;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+}
+
+.tab-button {
+    background: #e0e5ec;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active, .tab-button:hover {
+    background: #d1d9e6;
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+p, ul {
+    color: #555;
+    line-height: 1.6;
+}
+
+</style>
+<body>
+    <div class="container">
+        <nav>
+            <button class="tab-button active" onclick="showTab('home')">Home</button>
+            <button class="tab-button" onclick="showTab('projects')">Projects</button>
+        </nav>
+        <div id="home" class="tab-content active">
+            <p>Hi
+            <br>I'm Abhigyan.</br></br>
 I love the skies, the rivers, the moon, and stargazing. I love reading books, listening to music, playing and watching sports & games, watching movies, and learning new things and skills (even if they are of limited utility).<br/><br/> Shy and nerdy. Sarcastic and simplistic. <br/><br/>
 An ardent fan of MS Dhoni, SRK, V Kohli, Team India and CSK. A Swiftie.<br/>
 </br>I'm not a brave man, but I'd like to do some good in my life by helping others.<br/></br>
 			OpenPGP🔑: <a href="https://raw.githubusercontent.com/borahabhigyan/borahabhigyan.github.io/main/709222D55664E52478682694EE64E15D7D3FF306.asc" target="_blank" rel="noopener norefferer" contenteditable="false">EE64 E15D 7D3F F306</a></br>
 			e-mail: sbus[plus]fed[at]simplelogin[dot]co</br>
 instagram: <a href="https://instagram.com/o7gyan/" target="_blank" rel="noopener norefferer" contenteditable="false">@o7gyan</a><br/>
-			<a href="http://borahabhigyan.github.io/message.html" target="_blank" rel="noopener norefferer" contenteditable="false">click here to send me a public message</a></p></div>
-<p style="text-align:center"><i><small>This page is editable. Type/change anything you want, right here, on this page!</i></small></p>
-<div>
-  <details>
-    <summary>Click here to view and edit <code>css styles</code>.</summary>
-<pre>
-<style  spellcheck="false" contenteditable="true">
-body{
-  background-color:#388087; 
-  color:#c2edce;
-  font-family: 'Roboto', sans-serif;
-}  
-a, a:hover, a:focus, a:active {
-      text-decoration: none;
-      color: inherit;
- }
-h5{
-  text-align:center;
-  font-size: 1.0em;
-  margin-bottom:-1.2em;
-}
-style{
-  white-space:pre-wrap; 
-  display:block;
-  outline:none;
-  text-align: justify;
-  margin-top:.3em;
-  font-size:1.0em;
-  height:3em;
-}
-#styleMe{
-  height:100%; 
-  width:100%; 
-  color:yellow; 
-  font-size:1.0em;
-  display:block;
-  text-align:justify;
-  line-height:1.2;
-  margin:auto;
-  margin-top:3em;
-}
-</style>
-</pre>
-</details>
-  </div>
-</body>
+			<a href="http://borahabhigyan.github.io/message.html" target="_blank" rel="noopener norefferer" contenteditable="false">click here to send me a public message</a></p>
 
+        </div>
+        <div id="projects" class="tab-content">
+            <h2>Projects</h2>
+            <ul>
+                <li><a href="marksdatabase.vercel.app" target="_blank">Marks Database</a>: A simple result declaration system using Google Sheets API. With and without CAPTCHA validation.</li>
+                <li><a href="crowdname.vercel.app" target="_blank">Dummy Movement Creator</a>: A Dummy Movement Creator page with Google Forms, Google Sheets API. Can be used for creating Petition, Lists, Crowd-sourcing info as well.</li>
+                <li>Birthday Tracker: Html, css, js birthday tracker for personal use.</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+<script>
+  function showTab(tabName) {
+    const tabs = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-button');
+
+    tabs.forEach(tab => {
+        if (tab.id === tabName) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+
+    buttons.forEach(button => {
+        if (button.textContent.toLowerCase() === tabName) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+}
+
+</script>
 </html>
