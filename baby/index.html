@@ -215,23 +215,20 @@ buttons.forEach(btn => {
 async function sendMood(mood, emoji, note) {
   const baseMessage = getMoodMessage(mood, emoji);
   const finalMessage = note 
-    ? `${baseMessage}\n\nShe said: "${note}"` 
-    : baseMessage;
+    ? `${baseMessage}\n\nShe said: "${note}" ♡` 
+    : `${baseMessage} ♡`;
 
-  // Safe ASCII-only title (emojis/hearts go in body only)
-  const title = "Mood Update from Dhunu";
-  const priority = ['sad', 'anxious', 'angry', 'grumpy'].includes(mood) ? 'high' : 'default';
+  // MAXIMUM priority (urgent level 5) for ALL moods
+  const priority = 'high';
 
   try {
     const response = await fetch(NTFY_URL, {
       method: 'POST',
       headers: {
-        'Title': title,         // ← Only ASCII here!
+        'Title': "Mood Update from Dhunu",
         'Priority': priority
-        // Optional: add safe tags if you want
-        // 'Tags': 'mood,heart'
       },
-      body: finalMessage        // ← Emojis + all cute stuff here is perfectly fine
+      body: finalMessage
     });
 
     if (response.ok) {
@@ -239,7 +236,7 @@ async function sendMood(mood, emoji, note) {
         icon: 'success',
         title: 'Sent! ♡',
         text: 'Your mood reached Abhigyan~ 💕',
-        timer: 2500,
+        timer: 1800,
         showConfirmButton: false,
         background: '#fdfdff',
         color: '#4a3c5c'
