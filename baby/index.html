@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>♡ RiMood ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    :root {
+      --bg: #f9f9ff;
+      --card: #ffffff;
+      --accent: #d7c0ff;
+      --accent-dark: #a78bdb;
+      --text: #4a3c5c;
+      --subtext: #8a7aa6;
+      --shadow: rgba(167, 139, 219, 0.12);
+      --heart: #ff9ab5;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: linear-gradient(135deg, #f9f9ff 0%, #f0f4ff 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: var(--card);
+      border-radius: 32px;
+      padding: 28px 20px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 20px 40px var(--shadow);
+      text-align: center;
+      border: 1px solid #e8e0ff;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 { font-size: clamp(1.9rem, 6vw, 2.2rem); color: var(--accent-dark); margin-bottom: 8px; font-weight: 700; }
+    .subtitle { color: var(--subtext); margin-bottom: 28px; font-size: clamp(0.95rem, 4vw, 1.05rem); }
+
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .mood-btn {
+      background: #fdfdff;
+      border: 2px solid #e8e0ff;
+      border-radius: 24px;
+      padding: 20px 14px;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 16px var(--shadow);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .mood-btn:hover, .mood-btn:focus {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 16px 32px var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .mood-btn:active { transform: scale(0.96); }
+
+    .emoji { font-size: clamp(3.8rem, 12vw, 4.5rem); line-height: 1; transition: transform 0.35s ease; }
+
+    .mood-btn:hover .emoji, .mood-btn:focus .emoji { transform: scale(1.12) rotate(6deg); }
+
+    .label { font-weight: 600; color: var(--accent-dark); font-size: clamp(0.95rem, 3.5vw, 1.08rem); }
+
+    /* Heart rain */
+    .heart-rain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.8rem;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear forwards;
+      color: var(--heart);
+      text-shadow: 0 0 6px rgba(255,154,181,0.7);
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(120vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .footer { margin-top: 28px; font-size: 1.3rem; color: var(--subtext); }
+  </style>
+</head>
+<body>
+
+<div class="heart-rain" id="heartRain"></div>
+
+<div class="container">
+  <h1>♡ How are you feeling, Dhunu? ♡</h1>
+  <p class="subtitle">tap gently~ I'm always listening ♡</p>
+
+  <div class="mood-grid">
+    <button class="mood-btn" data-mood="superhappy" data-emoji="🥰">
+      <div class="emoji">🥰</div>
+      <span class="label">Super Happy!</span>
+    </button>
+
+    <button class="mood-btn" data-mood="happy" data-emoji="😊">
+      <div class="emoji">😊</div>
+      <span class="label">Happy</span>
+    </button>
+
+    <button class="mood-btn" data-mood="sad" data-emoji="🥺">
+      <div class="emoji">🥺</div>
+      <span class="label">Sad</span>
+    </button>
+
+    <button class="mood-btn" data-mood="anxious" data-emoji="😟">
+      <div class="emoji">😟</div>
+      <span class="label">Anxious</span>
+    </button>
+
+    <button class="mood-btn" data-mood="angry" data-emoji="😤">
+      <div class="emoji">😤</div>
+      <span class="label">Angry</span>
+    </button>
+
+    <button class="mood-btn" data-mood="grumpy" data-emoji="😠">
+      <div class="emoji">😠</div>
+      <span class="label">Grumpy</span>
+    </button>
+
+    <button class="mood-btn" data-mood="tired" data-emoji="🥱">
+      <div class="emoji">🥱</div>
+      <span class="label">Tired</span>
+    </button>
+
+    <button class="mood-btn" data-mood="baby" data-emoji="👶">
+      <div class="emoji">👶</div>
+      <span class="label">Feeling like a baby</span>
+    </button>
+  </div>
+
+  <div class="footer">♡₊˚⊹</div>
+</div>
+
+<script>
+const buttons = document.querySelectorAll('.mood-btn');
+const heartRain = document.getElementById('heartRain');
+
+const NTFY_TOPIC = "moodybaby";  // ← CHANGE THIS to something long & random!!
+const NTFY_URL = `https://ntfy.sh/${NTFY_TOPIC}`;
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const mood = btn.dataset.mood;
+    const emoji = btn.dataset.emoji;
+
+    btn.style.transform = 'scale(0.96)';
+    setTimeout(() => btn.style.transform = 'scale(1)', 160);
+
+    Swal.fire({
+      title: 'wanna tell me why? ♡',
+      input: 'textarea',
+      inputPlaceholder: 'Type here... (optional, you can leave it blank~)',
+      inputAttributes: {
+        autocapitalize: 'off',
+        style: 'font-family: Poppins, sans-serif; font-size: 1rem; resize: vertical; min-height: 90px;'
+      },
+      showCancelButton: true,
+      cancelButtonText: 'Skip note ♡',
+      confirmButtonText: 'Send my mood ♡',
+      confirmButtonColor: '#b86bdb',
+      cancelButtonColor: '#a78bdb',
+      background: '#fdfdff',
+      color: '#4a3c5c',
+      backdrop: 'rgba(249,249,255,0.85)'
+    }).then((result) => {
+      if (result.isConfirmed || result.dismiss === Swal.DismissReason.cancel) {
+        const note = result.isConfirmed ? (result.value?.trim() || '') : '';
+        sendMood(mood, emoji, note);
+      }
+    });
+  });
+});
+
+async function sendMood(mood, emoji, note) {
+  const baseMessage = getMoodMessage(mood, emoji);
+  const finalMessage = note 
+    ? `${baseMessage}\n\nShe said: "${note}"` 
+    : baseMessage;
+
+  // Safe ASCII-only title (emojis/hearts go in body only)
+  const title = "Mood Update from Dhunu";
+  const priority = ['sad', 'anxious', 'angry', 'grumpy'].includes(mood) ? 'high' : 'default';
+
+  try {
+    const response = await fetch(NTFY_URL, {
+      method: 'POST',
+      headers: {
+        'Title': title,         // ← Only ASCII here!
+        'Priority': priority
+        // Optional: add safe tags if you want
+        // 'Tags': 'mood,heart'
+      },
+      body: finalMessage        // ← Emojis + all cute stuff here is perfectly fine
+    });
+
+    if (response.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent! ♡',
+        text: 'Your mood reached Abhigyan~ 💕',
+        timer: 2500,
+        showConfirmButton: false,
+        background: '#fdfdff',
+        color: '#4a3c5c'
+      });
+
+      if (['happy', 'superhappy'].includes(mood)) {
+        createHeartRain();
+      }
+    } else {
+      throw new Error(`Server responded with ${response.status}`);
+    }
+  } catch (err) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Could not send the mood. Check internet or topic name?',
+      background: '#fdfdff',
+      color: '#4a3c5c'
+    });
+    console.error('Fetch error:', err);
+  }
+}
+
+function getMoodMessage(mood, emoji) {
+  const messages = {
+    superhappy: "MY BABY DHUNU IS SUPER DUPER HAPPYYYYY!! 🥰💖✨",
+    happy:      "Dhunu is feeling happy todayy~ 😊💕",
+    sad:        "Aww Dhunu is sad... 🥺💔 come hug her pls",
+    anxious:    "Dhunu is feeling a bit anxious right now... 😟🫂",
+    angry:      "Uh ohhh... Dhunu is angry! 😤🔥 but still the cutest",
+    grumpy:     "Grumpy little Dhunu alert 😠🐾",
+    tired:      "Sleepy Dhunu needs cuddles... 🥱💤",
+    baby:       "Awww Dhunu is feeling like a tiny baby today~ 👶 needs extra love!!"
+  };
+  return messages[mood] || `Dhunu shared: ${emoji}`;
+}
+
+function createHeartRain() {
+  const count = 30;
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = ['💗','✨','♡','💕','🫶'][Math.floor(Math.random()*5)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    heart.style.animationDelay = Math.random() * 0.8 + 's';
+    heart.style.opacity = Math.random() * 0.7 + 0.3;
+    heartRain.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
+}
+</script>
+</body>
+</html>
